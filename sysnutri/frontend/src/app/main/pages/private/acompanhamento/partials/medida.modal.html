@@ -1,0 +1,32 @@
+<md-dialog aria-label="Mango (Fruit)" flex="50">
+  <form>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h3>Adicionar medida</h3>
+        <span flex></span>
+        <a ng-click="cancel()" class="md-raised md-ink-ripple md-default-theme" >
+            <i class="icon s26 icon-close"></i>
+        </a>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+        <form name="incluirMedidaForm">
+            <div layout="column" layout-gt-xs="row" class="layout-gt-xs-row layout-column flex margin-bottom-20">
+                <md-input-container flex>
+                    <input type="date" name="dataMedida" placeholder="Data medição" ng-model="medida.dataMedida" ng-required="true" max="9999-12-31">
+                    <div ng-messages="incluirMedidaForm.dataMedida.$error" ng-show="incluirMedidaForm.dataMedida.$touched" role="alert">
+                        <div ng-message="required"><span>Campo obrigatório</span></div>
+                    </div>
+                </md-input-container>
+            </div>
+        </form>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+        <span flex></span>
+        <md-button  ng-click="incluir(medida)" style="margin-right:20px;" ng-disabled="incluirMedidaForm.$invalid">
+            Incluir
+        </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

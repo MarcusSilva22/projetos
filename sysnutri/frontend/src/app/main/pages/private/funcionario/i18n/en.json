@@ -1,0 +1,12 @@
+{
+    "funcionario.pesquisa":"Pesquisar funcionário",
+    "funcionario.incluir":"Incluir funcionário",
+    "funcionario.editar":"Editar funcionário",
+    "funcionario.visualizar":"Visualizar funcionário",
+
+    "funcionario.validacao.form.erro.obrigatoriedade":"Campo obrigatório",
+    "funcionario.validacao.form.erro.email":"Email inválido",
+    "funcionario.validacao.form.erro.min":"A senha deve ter no mínimo 8 caracteres",
+    "funcionario.validacao.form.erro.cpf_invalido":"CPF inválido"
+
+}

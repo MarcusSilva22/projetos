@@ -1,0 +1,83 @@
+<div class="content">
+    <div class="form-wrapper md-whiteframe-1dp margin-left-30 margin-top-20" flex="95">
+        <div class="p-5 border-bottom" layout="row" layout-align="space-between center" flex="100">
+            <div class="md-title h3">Buscar paciente</div>
+        </div>
+        <form name="ctrl.formPesquisa" class="md-inline-form" novalidate>
+            <div layout="column" layout-gt-xs="row" class="layout-gt-xs-row layout-column flex margin-bottom-20 margin-top-30">
+				<div flex="100" flex-gt-xs="100">
+					<a ui-sref=".incluir" class="float-right md-blue-500-bg white-text md-raised reference-button md-button md-ink-ripple md-default-theme">
+	                    <span translate="botao.incluir">Incluir</span>
+	                </a>
+				</div>
+			</div>
+            <div layout="column" layout-gt-xs="row" class="layout-gt-xs-row layout-column flex margin-bottom-20">
+                <md-input-container flex>
+                    <input type="text" name="nome" placeholder="Nome do paciente" ng-model="ctrl.pesquisa.nome" style="height: 28px;">
+                </md-input-container>
+                <!-- <md-input-container flex>
+                    <input type="date" name="dataNascimento" placeholder="Data de Nascimento" ng-model="ctrl.paciente.dataNascimento">
+                </md-input-container> -->
+            </div>
+            <div layout="column" layout-gt-xs="row" layout-align="end" class="layout-gt-xs-row layout-column flex margin-bottom-20">
+                <a class="md-yellow-700-bg white-text md-raised reference-button md-button md-ink-ripple md-default-theme" ng-click="ctrl.limparPesquisa()">
+                    <span translate="botao.limpar">Limpar</span>
+                </a>
+                <a class="md-green-500-bg white-text md-raised reference-button md-button md-ink-ripple md-default-theme" ng-click="ctrl.pesquisar(ctrl.pesquisa)">
+                    <span translate="botao.pesquisar">Pesquisar</span>
+                </a>
+            </div>
+        </form>
+    </div>
+    <div class="form-wrapper md-whiteframe-1dp margin-left-25 margin-top-30" flex="95" ng-show="ctrl.pacientes.length > 0">
+        <div class="p-5 border-bottom margin-bottom-15" layout="row" layout-align="space-between center" flex="100">
+            <div class="md-title h3">Pacientes</div>
+        </div>
+        <md-table-container flex="100">
+          <table md-table>
+              <thead md-head>
+                  <tr md-row>
+                      <th md-column><span>Nome</span></th>
+                      <th md-column><span>Data Nascimento</span></th>
+                      <th md-column class="center">Ações</th>
+                  </tr>
+              </thead>
+              <tbody md-body>
+                  <tr ng-repeat="paciente in ctrl.pacientes">
+                      <td md-cell>{{paciente.nome}}</td>
+                      <td md-cell>{{paciente.dataNascimento | date:'dd/MM/yyyy'}}</td>
+                      <td md-cell class="center">
+                          <a ui-sref=".editar({id: paciente.id, paciente: paciente} )" class="md-raised md-ink-ripple md-default-theme" >
+                              <i class="icon s26 icon-pencil"></i>
+                              <md-tooltip class="h5">
+                                  <label translate="hint.editar"></label>
+                              </md-tooltip>
+                          </a>
+                          <a ui-sref=".visualizar({id: paciente.id, paciente: paciente})" class="md-raised md-ink-ripple md-default-theme" >
+                              <i class="icon s26 icon-magnify"></i>
+                              <md-tooltip class="h5">
+                                  <label translate="hint.visualizar"></label>
+                              </md-tooltip>
+                          </a>
+                          <a href="#" class="md-raised md-ink-ripple md-default-theme" ng-click="ctrl.removerPaciente(paciente.id, $evt)">
+                              <i class="icon s26 icon-cancel"></i>
+                              <md-tooltip class="h5">
+                                  <label translate="hint.remover"></label>
+                              </md-tooltip>
+                          </a>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+      </md-table-container>
+      <md-table-pagination md-page="1" md-limit="10"
+                           md-total="10"
+                           md-on-paginate="vm.onPaginate"
+                           md-label="{page: 'Página:', rowsPerPage: 'Resultados por página:', of: 'de'}"
+                           md-options="ctrl.options"
+                           md-page-select>
+      </md-table-pagination>
+
+    </div>
+
+</div>

@@ -1,0 +1,45 @@
+<md-dialog aria-label="Mango (Fruit)" flex="50">
+  <form>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h3>Enviar Notificação</h3>
+        <span flex></span>
+        <a ng-click="cancel()" class="md-raised md-ink-ripple md-default-theme" >
+            <i class="icon s26 icon-close"></i>
+        </a>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+        <form name="formIncluir" class="md-inline-form" novalidate>
+
+        </form>
+        <form name="notificaoForm">
+            <div layout="column" layout-gt-xs="row" class="layout-gt-xs-row layout-column flex margin-bottom-20">
+                <md-input-container flex>
+                    <input type="text" placeholder="Nome" ng-model="notificacao.paciente.nome" ng-disabled="true">
+                </md-input-container>
+            </div>
+            <div layout="column" layout-gt-xs="row" class="layout-gt-xs-row layout-column flex margin-bottom-20">
+                <md-input-container flex>
+                    <input type="text"  placeholder="Telefone" ng-model="notificacao.paciente.telefones[1].telefone" mask="(99) 9?9999-9999" ng-disabled="true">
+                </md-input-container>
+            </div>
+            <div layout="column" layout-gt-xs="row" class="layout-gt-xs-row layout-column flex margin-bottom-20">
+                <md-input-container flex>
+                    <textarea placeholder="Mensagem" name="mensagem" ng-model="notificacao.notificacao.mensagem" md-maxlength="100"maxlength="100" md-select-on-focus  ng-required="true"></textarea>
+                    <div ng-messages="notificaoForm.mensagem.$error" ng-show="notificaoForm.mensagem.$touched || loginForm.$submitted" role="alert">
+                        <div ng-message="required"><span>Campo obrigatório</span></div>
+                    </div>
+                </md-input-container>
+            </div>
+        </form>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+      <span flex></span>
+      <md-button  ng-click="enviar(notificacao)" style="margin-right:20px;" >
+        Enviar Notificação
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

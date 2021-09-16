@@ -1,0 +1,491 @@
+/*
+ * CORES DO SISTEMA
+ * Não declare cores e medidas diretamente no codigo, para facilitar a posterior manutencao.
+**/
+$vermelho: #FF0000;
+$laranja: #FF9100;
+$laranja-hover: #FF6D00;
+$amarelo: #FFF926;
+$azul: #0253ed;
+$azul-cinza: #607D8B;
+$verde: #2eb50d;
+$verde-claro: #D3EBB2;
+$preto: rgba(0,0,0,0.87);
+$amarelo-escuro: rgb(245, 199, 22);
+$cinza: lighten(gray, 5%);
+$cinza-claro: lighten(gray, 30%);
+$cinza-maisclaro: lighten(gray, 40%);
+$gelo: #FAFAFA;
+$branco: #fff;
+$opacidade : 0.35;
+/* =========================================== */
+
+
+
+md-autocomplete[disabled], md-autocomplete:disabled {
+    background-color: transparent !important;
+}
+
+.ui-grid-select{
+    background-color: white;
+    width: 100%;
+    height: 20px;
+    padding: 2px;
+    &:disabled {
+        // -webkit-appearance: none;
+        // -moz-appearance: none;
+    }
+}
+
+cabecalho-chamado > form, form[name="fieldsetGarantiaForm"] {
+    margin-bottom: 20px;
+}
+
+md-input-container textarea {
+    overflow: auto !important;
+}
+
+md-input-container .md-input {
+    line-height: 25px !important;
+}
+
+md-input-container.md-default-theme .md-input[disabled], md-input-container .md-input[disabled], md-input-container.md-default-theme .md-input [disabled], md-input-container .md-input [disabled], md-checkbox.md-default-theme[disabled] .md-label, md-checkbox[disabled] .md-label {
+    color: rgba(0,0,0,0.45);
+}
+
+md-tooltip {
+  .md-background {
+    border-radius: inherit;
+  }
+  .md-content {
+    height: auto;
+    max-width: 400px;
+    padding: 8px;
+    white-space: initial;
+    background-color: lighten($preto, 5%) !important;
+  }
+}
+
+.ui-grid-header-cell-row {
+    .ui-grid-header-cell{
+        padding-left: 5px !important;
+    }
+}
+
+.break-line {
+  white-space: normal !important;
+}
+.link-disabled {
+  pointer-events: none!important;
+  cursor: not-allowed !important;
+}
+.justificativa-grid-cell {
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+md-input-container {
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+}
+.align-grid {
+  padding-top: 5px;
+}
+.align-grid-header {
+    padding-top: 8px;
+    margin-left: -5px;
+    height: 27px;
+}
+.grid-first-header {
+    margin-left: 0px;
+}
+.no-space {
+  margin: 0;
+  padding: 0;
+}
+.select-text-style {
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.vAccordion--default {
+    margin-top: 0px !important;
+}
+// Cor da borda do accordion quando expandido
+.vAccordion--default v-pane.is-expanded > v-pane-header {
+  border-bottom-color: $laranja;
+}
+// Cor do título do accordion quando expandido
+.vAccordion--default v-pane.is-expanded > v-pane-header .pane-control {
+  color: $laranja;
+}
+// Estilo do cabeçalho do accordion
+.vAccordion--default v-pane-header {
+  border-bottom: 2px solid $azul-cinza;
+  font-weight: bold;
+  &:focus,
+  &:hover {
+    color: $preto;
+    cursor: auto;
+  }
+}
+// Definindo margem superior para primeiro elemento do accordion
+.vAccordion--default v-pane:first-child v-pane-header:first-child {
+  margin: 2px;
+}
+// Cor do símbolo de +/-
+.vAccordion--default v-pane-header::after,
+.vAccordion--default v-pane-header::before {
+  background-color: $laranja;
+}
+// // Removendo ícone de accordions que terão controle próprio
+// .vAccordion--default v-pane-header[inactive]::after,
+// .vAccordion--default v-pane-header[inactive]::before {
+//   display: none;
+// }
+// Alinha os botões do accordion para a direita
+.accordion-buttons {
+  text-align: right;
+}
+// Muda cursor e cor dos botões do accordion
+.accordion-buttons i {
+  cursor: pointer;
+  &:hover {
+    color: $laranja-hover;
+  }
+}
+// Altera cor e cursor do título do accordion no hover
+.pane-control:hover {
+  color: $laranja-hover;
+  cursor: pointer;
+}
+// Padroniza tamanho dos ícones da tree grid
+.ui-grid i {
+  font-size: 1.3rem;
+}
+// Estiliza tree grid
+.ui-grid-cell,
+.ui-grid-header-cell {
+  background-color: $branco !important;
+  border-right: none;
+  border-bottom: 1px solid $cinza-maisclaro !important;
+  color: $preto;
+  font-size: 1.3rem;
+}
+// Esconde botão não utilizado tree grid
+.ui-grid-column-menu-button {
+  display: none;
+}
+// Tira borda adicional do header da tree grid
+.ui-grid-header {
+  border-bottom: none;
+}
+.gray-label {
+  color: $cinza !important;
+}
+.gray-label2 {
+  color: $cinza-claro !important;
+}
+
+fieldset legend {
+    background-color: white;
+}
+
+md-select-value {
+    color: $cinza !important;
+}
+.pointer {
+  cursor: pointer;
+}
+.gray-toolbar {
+  background-color: $cinza-maisclaro !important;
+}
+.black-label {
+  color: $preto !important;
+}
+.grid .ui-grid-row {
+  text-align: center !important;
+}
+.grid .ui-grid-row .blue {
+  background-color: $verde !important;
+  color: $gelo !important;
+}
+.padding-left-20px {
+  padding-left: 20px !important;
+}
+.padding-right-20px {
+  padding-right: 20px !important;
+}
+//Definição de status - GRID - Autorizar OS
+.status-correcao-grid,
+.status-corrigido-grid {
+  border-radius: 50%;
+  display: inline-block;
+  height: 10px;
+  width: 10px;
+  border: none;
+  background-color: $vermelho;
+}
+.not-editable-content {
+    border: 0px !important;
+    background-color: inherit;
+}
+.editable-content, .not-editable-content {
+    padding-left: 4px !important;
+    //padding-right: 4px !important;
+    width: 80% !important;
+    min-width: 70px !important;
+    max-width: 100px;
+    text-align: left;
+    // margin-top: 4px;
+    // display: inline-block;
+    // margin-top: 0px !important;
+    // margin-bottom: -5px !important;
+    // cursor: pointer;
+    //
+    // .icon {
+    //     padding-left: 2px;
+    //     vertical-align: text-bottom;
+    // }
+}
+
+//Definição de status - Legenda
+.status-aprovado {
+  color: $verde !important;
+}
+.status-andamento {
+  color: brown !important;
+}
+.status-corrigido {
+  font-size: 30px;
+  color: $laranja !important;
+  // #FF4600
+}
+.status-correcao {
+  font-size: 30px;
+  color: $vermelho!important;
+}
+.status-aguardando-faturamento {
+  font-size: 30px;
+  color: $azul !important;
+}
+.status-garantia {
+  font-size: 20px;
+  color: $amarelo-escuro !important;
+}
+.status-atrasado {
+  font-size: 30px;
+  color: $amarelo !important;
+}
+.ui-grid-header-cell .ui-grid-cell-contents {
+  margin-left: -5px !important;
+  text-align: left !important;
+}
+.ui-grid-header-cell-reais {
+  .ui-grid-cell-contents {
+    text-align: right !important;
+  }
+}
+.ui-grid-row {
+  .right-align {
+    text-align: right;
+    padding-right: 30px;
+  }
+}
+.green-bg {
+  background-color: $verde-claro !important;
+}
+.icon-disabled {
+  cursor: not-allowed !important;
+  color: $cinza-claro !important;
+}
+.button-disabled {
+  pointer-events: none !important;
+  opacity: $opacidade;
+}
+.center {
+  text-align: center !important;
+}
+.grid-text-align {
+  text-align: center !important;
+}
+.no-bullets {
+  list-style-type: none;
+}
+.important-text {
+  font-weight: 900;
+}
+.fix-autocomplete input {
+  padding-bottom: 20px !important;
+}
+
+.span-text {
+    font-family: "Roboto", "Helvetica Neue", "Arial", sans-serif;
+    word-break: break-word;
+    margin: 0px;
+}
+
+/*Titulo e subtitulo do sistema*/
+
+.lightGray-text {
+    color: #f8981d !important;
+    background-color: #fff0dd;
+    padding: 15px;
+    font-size: 23px;
+}
+
+.form-subtitle{
+  color: #504f4f !important;
+  font-size: 18px;
+  border-bottom: 1px solid #000;
+  padding-bottom: 0 !important;
+  margin: 10px 0 20px 0;
+}
+
+/*Formatação parecida com grid para conteudo*/
+
+.cabecalhoEstilizado{
+  background-color: #b3b2b2;
+  padding: 10px;
+  border-right: 1px solid #000;
+  border-bottom: 1px solid #000;
+  margin-bottom: 0;
+  font-weight: bold;
+}
+.conteudoEstilizado{
+  background-color: #e0dede;
+  padding: 10px;
+  border-right: 1px solid #000;
+  margin-top: 0;
+}
+
+.borderNone{
+  border-right: 0;
+}
+
+.padding-bottom-27{
+  padding-bottom: 27px;
+}
+
+.bold {
+    font-weight: bold !important;
+}
+
+.max-multi-selected{
+  max-width: 332px;
+  overflow: hidden;
+}
+
+/*limitador de caracteres de exibição da grid*/
+
+table td{
+  max-width: 270px; /* Tamanho */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap
+}
+
+/*Correção da cor do label do multiselect*/
+
+.md-select-value *:first-child {
+  color: #646464 !important;
+}
+
+/*ajuste no select*/
+
+.max-multi-selected {
+    max-width: 100%;
+}
+md-input-container .md-errors-spacer {
+  min-height: 24px;
+}
+
+/*ajuste campo de data*/
+
+.md-datepicker-input {
+    min-width: 120px;
+    max-width: 100%;
+}
+.data div.md-datepicker-input-container{
+  width: 80%;
+}
+
+.error{
+  color: #D50000;
+}
+.margin-right-33{
+  margin-right: 33px;
+}
+
+
+.data-ui-grid div.md-datepicker-input-container {
+    width: 66%;
+}
+
+.form-wrapper {
+  padding: 25px;
+}
+
+.campoPerfil md-input-container{
+  width: 85%;
+}
+
+.padding-top-8 .align-grid {
+  padding-top: 8px;
+}
+.margin-top-3{
+  margin-top: 3px;
+}
+
+.display-block{
+  display: block;
+}
+.float-right{
+  float: right;
+}
+
+/*Tamanho para grid*/
+
+max-width-70{
+  max-width: 70px;
+}
+max-width-75{
+  max-width: 75px;
+}
+max-width-80{
+  max-width: 80px;
+}
+max-width-85{
+  max-width: 85px;
+}
+max-width-90{
+  max-width: 90px;
+}
+max-width-95{
+  max-width: 95px;
+}
+max-width-100{
+  max-width: 100px;
+}
+max-width-110{
+  max-width: 110px;
+}
+max-width-120{
+  max-width: 120px;
+}
+max-width-130{
+  max-width: 130px;
+}
+max-width-140{
+  max-width: 140px;
+}
+max-width-150{
+  max-width: 150px;
+}
+
+
+
+.ajuste-tabela{
+  text-overflow: ellipsis !important;
+  overflow: hidden;
+  white-space: nowrap !important;
+}

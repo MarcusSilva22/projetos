@@ -1,0 +1,65 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>
+        <ion-title text-center>Agenda</ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+    <ion-list *ngIf="apresentarAgenda">
+      <ion-item *ngFor="let agenda of agendas; let i=index">
+          <table>
+            <tr>
+              <td colspan="3" style="width: 300px;">
+                  <span style="margin-rigth: 150px;">Data</span>
+                  <span style="color:gray">{{agenda.horario | date:'dd/MM/yyyy'}}</span>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3" style="width: 300px;">
+                  <span style="margin-rigth: 150px;">Horário</span>
+                  <span style="color:gray">{{agenda.horario | date:'HH:mm'}}</span>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3" style="width: 300px;">
+                  <span style="margin-rigth: 150px;">Médico</span>
+                  <span style="color:gray">{{agenda.funcionario.nome}}</span>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3" style="width: 300px;">
+                  <span style="margin-rigth: 150px;">Status</span>
+                  <span style="color:gray">{{agenda.confirmacao}}</span>
+              </td>
+            </tr>
+          </table>
+      </ion-item>
+    </ion-list>
+
+    <button *ngIf="apresentarAgenda" ion-button full style="background-color: green;" (click)="confirmarConsulta()" [disabled]="desabilitaBtn" >Confirmar consulta</button>
+    <button *ngIf="apresentarAgenda" ion-button full color="danger" (click)="desmarcarConsulta()">Desmarcar consulta</button>
+
+    <span *ngIf="!apresentarAgenda" style="color: gray; text-align:center;">Não há consulta agendada</span>
+
+    <!-- <ion-list>
+      <ion-item>
+        <ion-label floating>Data</ion-label>
+        <ion-input type="text" value="{{agenda.horario | date:'dd/MM/yyyy'}}" disabled="true"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Horário</ion-label>
+        <ion-input type="text" value="{{horario | date:'HH:mm'}}" disabled="true"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Médico</ion-label>
+        <ion-input type="text" [(ngModel)]="medico" disabled="true"></ion-input>
+      </ion-item>
+    </ion-list> -->
+
+
+</ion-content>

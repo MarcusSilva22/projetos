@@ -1,0 +1,40 @@
+<md-dialog aria-label="Mango (Fruit)" flex="50">
+  <form>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h3>Adicionar refeição</h3>
+        <span flex></span>
+        <a ng-click="cancel()" class="md-raised md-ink-ripple md-default-theme" >
+            <i class="icon s26 icon-close"></i>
+        </a>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+        <form name="incluirRefeicaoForm">
+            <div layout="column" layout-gt-xs="row" class="layout-gt-xs-row layout-column flex margin-bottom-20">
+                <md-input-container flex>
+                    <label>Refeição</label>
+                    <md-select ng-model="refeicao.tipoRefeicao">
+                        <md-option ng-repeat="refeicao in refeicoes" ng-value="{{refeicao}}">
+                            {{refeicao.descricao}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+                <md-input-container flex>
+                    <input type="time" name="tempo" placeholder="Horário" ng-model="refeicao.horario" required>
+                    <div ng-messages="incluirRefeicaoForm.tempo.$error" ng-show="incluirRefeicaoForm.tempo.$touched" role="alert">
+                        <div ng-message="required"><span>Campo obrigatório</span></div>
+                    </div>
+                </md-input-container>
+            </div>
+        </form>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+        <span flex></span>
+        <md-button  ng-click="incluir(refeicao)" style="margin-right:20px;" ng-disabled="incluirRefeicaoForm.$invalid">
+            Incluir
+        </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

@@ -1,0 +1,134 @@
+<div class="content">
+    <div class="form-wrapper md-whiteframe-1dp margin-left-25 margin-top-20" flex="95">
+        <div class="p-5 border-bottom margin-bottom-20" layout="row" layout-align="space-between center" flex="100">
+            <div class="md-title" ng-if="ctrl.isIncluir">Cadastrar funcionário</div>
+            <div class="md-title" ng-if="ctrl.isEditar">Editar funcionário</div>
+            <div class="md-title" ng-if="ctrl.isVisualizar">Visualizar funcionário</div>
+
+        </div>
+        <form name="ctrl.formIncluir" class="md-inline-form" novalidate>
+            <div layout="column" layout-gt-xs="row" class="layout-gt-xs-row layout-column flex margin-bottom-20">
+                <md-input-container flex>
+                    <input type="text" name="nome" placeholder="Nome" ng-model="ctrl.funcionario.nome" ng-required="true" ng-disabled="ctrl.isVisualizar">
+                    <div ng-messages="ctrl.formIncluir.nome.$error" ng-show="ctrl.formIncluir.nome.$touched || ctrl.formIncluir.$submitted" role="alert">
+                            <div ng-message="required"><span translate="funcionario.validacao.form.erro.obrigatoriedade"></span></div>
+                    </div>
+                </md-input-container>
+                <md-input-container flex>
+                    <input type="text" name="cpf" placeholder="CPF" ng-model="ctrl.funcionario.cpf" ng-required="true" mask="999.999.999-99" ng-cpf ng-disabled="ctrl.isVisualizar || ctrl.isEditar">
+                    <div ng-messages="ctrl.formIncluir.cpf.$error" ng-show="ctrl.formIncluir.cpf.$touched || ctrl.formIncluir.$submitted" role="alert">
+                        <div ng-message="required"><span translate="funcionario.validacao.form.erro.obrigatoriedade"></span></div>
+                        <div ng-message="cpf"><span translate="funcionario.validacao.form.erro.cpf_invalido"></span></div>
+                    </div>
+                </md-input-container>
+            </div>
+
+            <div layout="column" layout-gt-xs="row" class="layout-gt-xs-row layout-column flex margin-bottom-20">
+                <md-input-container flex>
+                    <input type="text" name="telefone" placeholder="Telefone" ng-model="ctrl.funcionario.telefone" ng-required="false" mask="(99) 9999-9999"  ng-disabled="ctrl.isVisualizar">
+                    <div ng-messages="ctrl.formIncluir.telefone.$error" ng-show="ctrl.formIncluir.telefone.$touched || ctrl.formIncluir.$submitted" role="alert">
+                        <div ng-message="required"><span translate="funcionario.validacao.form.erro.obrigatoriedade"></span></div>
+                    </div>
+                </md-input-container>
+                <md-input-container flex>
+                    <label>Celular</label>
+                    <input type="text" name="celular"  ng-model="ctrl.funcionario.celular" ng-required="true" mask="(99) 9?9999-9999"  ng-disabled="ctrl.isVisualizar">
+                    <div ng-messages="ctrl.formIncluir.celular.$error" ng-show="ctrl.formIncluir.celular.$touched || ctrl.formIncluir.$submitted" role="alert">
+                        <div ng-message="required"><span translate="funcionario.validacao.form.erro.obrigatoriedade"></span></div>
+                    </div>
+                </md-input-container>
+                <md-input-container flex>
+                    <label>Tipo Profissional</label>
+                     <md-select name="favoriteColor" ng-model="ctrl.funcionario.tipoProfissional" required  ng-disabled="ctrl.isVisualizar">
+                       <md-option value="secretarioa">Secretária</md-option>
+                       <md-option value="nutricionista">Nutricionista</md-option>
+                     </md-select>
+                </md-input-container>
+            </div>
+
+            <div layout="column" layout-gt-xs="row" class="layout-gt-xs-row layout-column flex margin-bottom-20">
+                <md-input-container flex>
+                    <input type="email" name="email" placeholder="Email" ng-model="ctrl.funcionario.email" ng-required="false"  ng-disabled="ctrl.isVisualizar">
+                    <div ng-messages="ctrl.formIncluir.email.$error" ng-show="ctrl.formIncluir.email.$touched || ctrl.formIncluir.$submitted" role="alert">
+                        <div ng-message="required"><span translate="funcionario.validacao.form.erro.obrigatoriedade"></span></div>
+                        <div ng-message="email"><span translate="funcionario.validacao.form.erro.email"></span></div>
+                    </div>
+                </md-input-container>
+                <md-input-container flex>
+                    <input type="date" name="dataNascimento" placeholder="Data de Nascimento" ng-model="ctrl.funcionario.dataNascimento" ng-required="true"  ng-disabled="ctrl.isVisualizar" max="9999-12-31">
+                    <div ng-messages="ctrl.formIncluir.dataNascimento.$error" ng-show="ctrl.formIncluir.dataNascimento.$touched || ctrl.formIncluir.$submitted" role="alert">
+                        <div ng-message="required"><span translate="funcionario.validacao.form.erro.obrigatoriedade"></span></div>
+                    </div>
+                </md-input-container>
+                <md-input-container flex>
+                    <input type="date" name="dataAdmissao" placeholder="Data de Admissão" ng-model="ctrl.funcionario.dataAdmissao" ng-required="true"  ng-disabled="ctrl.isVisualizar" max="9999-12-31">
+                    <div ng-messages="ctrl.formIncluir.dataAdmissao.$error" ng-show="ctrl.formIncluir.dataAdmissao.$touched || ctrl.formIncluir.$submitted" role="alert">
+                        <div ng-message="required"><span translate="funcionario.validacao.form.erro.obrigatoriedade"></span></div>
+                    </div>
+                </md-input-container>
+            </div>
+
+            <div layout="column" layout-gt-xs="row" class="layout-gt-xs-row layout-column flex margin-bottom-20">
+                <md-input-container flex>
+                    <input type="text" name="logradouro" placeholder="Logradouro" ng-model="ctrl.logradouro" ng-disabled="true">
+                    <div ng-messages="ctrl.formIncluir.logradouro.$error" ng-show="ctrl.formIncluir.logradouro.$touched || ctrl.formIncluir.$submitted" role="alert">
+                        <div ng-message="required"><span translate="funcionario.validacao.form.erro.obrigatoriedade"></span></div>
+                    </div>
+                </md-input-container>
+            </div>
+
+            <div layout="column" layout-gt-xs="row" class="layout-gt-xs-row layout-column flex margin-bottom-20">
+                <md-input-container flex>
+                    <input type="text" name="complemento" placeholder="Complemento" ng-model="ctrl.funcionario.complemento" ng-required="true"  ng-disabled="ctrl.isVisualizar">
+                    <div ng-messages="ctrl.formIncluir.complemento.$error" ng-show="ctrl.formIncluir.complemento.$touched || ctrl.formIncluir.$submitted" role="alert">
+                        <div ng-message="required"><span translate="funcionario.validacao.form.erro.obrigatoriedade"></span></div>
+                    </div>
+                </md-input-container>
+                <md-input-container flex>
+                    <input type="number" name="numero" placeholder="Número" ng-model="ctrl.funcionario.numero" ng-required="false" ng-disabled="ctrl.isVisualizar">
+                    <div ng-messages="ctrl.formIncluir.numero.$error" ng-show="ctrl.formIncluir.numero.$touched || ctrl.formIncluir.$submitted" role="alert">
+                        <div ng-message="required"><span translate="funcionario.validacao.form.erro.obrigatoriedade"></span></div>
+                    </div>
+                </md-input-container>
+                <md-input-container flex>
+                    <input type="text" name="cep" placeholder="CEP" ng-model="ctrl.funcionario.cep" ng-required="true" mask="99999-999"  ng-disabled="ctrl.isVisualizar" ng-blur="ctrl.buscarCep(ctrl.funcionario.cep)">
+                    <div ng-messages="ctrl.formIncluir.cep.$error" ng-show="ctrl.formIncluir.cep.$touched || ctrl.formIncluir.$submitted" role="alert">
+                        <div ng-message="required"><span translate="funcionario.validacao.form.erro.obrigatoriedade"></span></div>
+                    </div>
+                </md-input-container>
+            </div>
+
+            <div layout="column" layout-gt-xs="row" class="layout-gt-xs-row layout-column flex margin-bottom-20" ng-if="false">
+                <md-input-container flex>
+                    <input type="text" name="usuario" placeholder="Usuário" ng-model="ctrl.funcionario.usuario" ng-required="true"  ng-disabled="ctrl.isVisualizar">
+                    <div ng-messages="ctrl.formIncluir.usuario.$error" ng-show="ctrl.formIncluir.usuario.$touched || ctrl.formIncluir.$submitted" role="alert">
+                        <div ng-message="required"><span translate="funcionario.validacao.form.erro.obrigatoriedade"></span></div>
+                    </div>
+                </md-input-container>
+                <md-input-container flex>
+                    <input type="password" name="senha" placeholder="Senha" ng-model="ctrl.funcionario.senha" ng-required="true"  minlength="8" maxlength="15">
+                    <div ng-messages="ctrl.formIncluir.senha.$error" ng-show="ctrl.formIncluir.senha.$touched || ctrl.formIncluir.$submitted" role="alert">
+                        <div ng-message="required"><span translate="funcionario.validacao.form.erro.obrigatoriedade"></span></div>
+                        <div ng-message="minlength"><span translate="funcionario.validacao.form.erro.min"></span></div>
+                    </div>
+                </md-input-container>
+                <md-input-container flex>
+                    <input type="password" name="senhaConfirme" placeholder="Confirme sua senha" ng-model="ctrl.senhaConfirme" ng-required="ctrl.funcionario.senha" minlength="8" maxlength="15" ng-disabled="!ctrl.funcionario.senha" ng-blur="ctrl.validarSenha(ctrl.funcionario.senha, ctrl.senhaConfirme)">
+                    <div ng-messages="ctrl.formIncluir.senhaConfirme.$error" ng-show="ctrl.formIncluir.senhaConfirme.$touched || ctrl.formIncluir.$submitted" role="alert">
+                        <div ng-message="required"><span translate="funcionario.validacao.form.erro.obrigatoriedade"></span></div>
+                        <div ng-message="minlength"><span translate="funcionario.validacao.form.erro.min"></span></div>
+                    </div>
+                </md-input-container>
+            </div>
+
+            <div layout="column" layout-gt-xs="row" layout-align="end" class="layout-gt-xs-row layout-column flex margin-bottom-20">
+                <a class="md-red-500-bg white-text md-raised reference-button md-button md-ink-ripple md-default-theme" ui-sref="app.funcionario">
+                    <span translate="botao.cancelar">Cancelar</span>
+                </a>
+                <a class="md-green-500-bg white-text md-raised reference-button md-button md-ink-ripple md-default-theme" ng-click="ctrl.salvar(ctrl.funcionario)" ng-if="ctrl.isIncluir || ctrl.isEditar">
+                    <span translate="botao.salvar">Salvar</span>
+                </a>
+            </div>
+        </form>
+    </div>
+</div>

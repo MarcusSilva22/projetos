@@ -1,0 +1,19 @@
+<ion-header >
+  <ion-navbar  hideBackButton="true" style="height: 100px">
+    <img src="/assets/images/logo.png" class="logo"/>
+    <ion-buttons end>
+     <button ion-button icon-right color="light" (click)="dashboardPage()">SKIP<ion-icon name="ios-arrow-forward"></ion-icon></button>
+   </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+    <ion-list no-lines padding-top>
+      <ion-item style="border-radius: 64px">
+        <ion-input type="text" placeholder="Usuário" ng-model="login.usuario"></ion-input>
+      </ion-item>
+      <ion-item style="border-radius: 64px">
+        <ion-input type="password" placeholder="Senha" ng-model="login.senha"></ion-input>
+      </ion-item>
+    </ion-list>
+    <button ion-button block round color="secondary" ng-click="loginUsuario(login)">Login</button>
+</ion-content>

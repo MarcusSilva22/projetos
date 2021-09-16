@@ -1,0 +1,99 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>
+        <ion-title text-center>Perfil</ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+    <ion-list>
+      <ion-item *ngFor="let medida of acompanhamento; let i=index" text-wrap (click)="toggleGroup(i)" [ngClass]="{active: isGroupShown(i)}" class="perfil">
+        <h3 style="text-transform: uppercase;">
+          <table>
+            <tr>
+              <td colspan="3" style="width: 300px; height: 20px; padding-top: 4px;">
+                {{i+1}}° Consulta
+              </td>
+              <td>&nbsp;</td>
+              <td colspan="2"style="width: 300px; text-align: right;">
+                {{medida.data | date:'dd/MM/yyyy'}}
+              </td>
+            </tr>
+          </table>
+        </h3>
+        <div *ngIf="isGroupShown(i)">
+            <div>
+            </div>
+            <div>
+            </div>
+            <ion-item-group>
+              <ion-item-divider color="light" class="medidas">Medidas</ion-item-divider>
+                <ion-item>
+                    <span style="float: left;">Peso Atual</span>
+                    <span style="float: right;">{{medida.peso}} kg</span>
+                </ion-item>
+                <ion-item class="ultimoItem">
+                    <span style="float: left;">Altura</span>
+                    <span style="float: right;">{{medida.altura}} m</span>
+                </ion-item>
+                <ion-item-divider color="light" class="circunferencia">Circunferências</ion-item-divider>
+
+                <ion-item>
+                    <span style="float: left;">Braço direito</span>
+                    <span style="float: right;">{{medida.circ_bracoD}} cm</span>
+                </ion-item>
+                <ion-item>
+                    <span style="float: left;">Braço esquerdo</span>
+                    <span style="float: right;">{{medida.circ_bracoE}} cm</span>
+                </ion-item>
+                <ion-item>
+                    <span style="float: left;">Cintura</span>
+                    <span style="float: right;">{{medida.circ_cintura}} cm</span>
+                </ion-item>
+                <ion-item>
+                    <span style="float: left;">Abdominal</span>
+                    <span style="float: right;">{{medida.circ_abdominal}} cm</span>
+                </ion-item>
+                <ion-item>
+                    <span style="float: left;">Perna direita</span>
+                    <span style="float: right;">{{medida.circ_pernaD}} cm</span>
+                </ion-item>
+                <ion-item>
+                    <span style="float: left;">Perna esquerda</span>
+                    <span style="float: right;">{{medida.circ_pernaE}} cm</span>
+                </ion-item>
+                <ion-item>
+                    <span style="float: left;">Coxa direita</span>
+                    <span style="float: right;">{{medida.circ_coxaD}} cm</span>
+                </ion-item>
+                <ion-item class="ultimoItem">
+                    <span style="float: left;">Coxa esquerda</span>
+                    <span style="float: right;">{{medida.circ_coxaE}} cm</span>
+                </ion-item>
+                <ion-item-divider color="light" class="dobras">Dobras</ion-item-divider>
+
+                <ion-item>
+                    <span style="float: left;">Bicipital</span>
+                    <span style="float: right;">{{medida.dc_bicipital}} mm</span>
+                </ion-item>
+                <ion-item>
+                    <span style="float: left;">Tricipital</span>
+                    <span style="float: right;">{{medida.dc_tricipital}} mm</span>
+                </ion-item>
+                <ion-item>
+                    <span style="float: left;">Suprailiaca</span>
+                    <span style="float: right;">{{medida.dc_suprailiaca}} mm</span>
+                </ion-item>
+                <ion-item class="ultimoItem">
+                    <span style="float: left;">Subraescapular</span>
+                    <span style="float: right;">{{medida.dc_supraEscapular}} mm</span>
+                </ion-item>
+            </ion-item-group>
+        </div>
+
+      </ion-item>
+  </ion-list>
+
+</ion-content>

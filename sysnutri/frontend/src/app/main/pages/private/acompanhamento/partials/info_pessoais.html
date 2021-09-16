@@ -1,0 +1,153 @@
+<form name="ctrl.formRefeicao"  ms-form-wizard-form novalidate>
+    <div class="p-5 border-bottom margin-bottom-20" layout="row" layout-align="space-between center" flex="100">
+        <div class="md-subhead">Informações de consulta</div>
+    </div>
+    <div layout="column" layout-gt-xs="row" class="layout-gt-xs-row layout-column flex margin-left-25 margin-rigth-30">
+        <md-input-container class="md-block" flex>
+            <label>Motivação</label>
+            <textarea name="motivacao" ng-model="ctrl.acompanhamento.infoPessoal.motivacao" md-maxlength="150" md-select-on-focus="" required></textarea>
+            <div ng-messages="ctrl.formRefeicao.motivacao.$error"
+                 ng-show="ctrl.formRefeicao.motivacao.$touched || ctrl.formRefeicao.$submitted" role="alert">
+                <div ng-message="required">
+                    <span>Informe a motivação pessoal do paciente.</span>
+                </div>
+            </div>
+        </md-input-container>
+    </div>
+    <div layout="column" layout-gt-xs="row" class="layout-gt-xs-row layout-column flex margin-left-25 margin-rigth-30">
+        <md-input-container flex>
+          <label>Expectativas do acompanhamento</label>
+          <textarea name="expectativas" ng-model="ctrl.acompanhamento.infoPessoal.expectativa" md-maxlength="150" md-select-on-focus="" required></textarea>
+          <div ng-messages="ctrl.formRefeicao.expectativas.$error"
+               ng-show="ctrl.formRefeicao.expectativas.$touched || ctrl.formRefeicao.$submitted" role="alert">
+              <div ng-message="required">
+                  <span>Informe as expectativas do paciente.</span>
+              </div>
+          </div>
+        </md-input-container>
+    </div>
+
+    <div layout="column" layout-gt-xs="row" class="layout-gt-xs-row layout-column flex">
+        <div class="p-5 border-bottom" layout="row" layout-align="space-between center" flex="100">
+            <div class="md-subhead">Informação pessoal e social</div>
+        </div>
+    </div>
+    <div layout="row" layout-xs="column">
+      <div class="margin-left-25" flex>
+          <div layout="row" layout-gt-xs="row" class="layout-gt-xs-row layout-column flex">
+              <md-input-container flex>
+                  <label>Função instestinal</label>
+                  <md-select ng-model="ctrl.acompanhamento.infoPessoal.funcao_intestinal">
+                      <md-option ng-value="1">Normal</md-option>
+                      <md-option ng-value="2">Constipação</md-option>
+                      <md-option ng-value="3">Diarréia</md-option>
+                      <md-option ng-value="4">Irregular</md-option>
+                  </md-select>
+              </md-input-container>
+          </div>
+          <div layout="row" class="layout-gt-xs-row layout-column flex">
+              <md-input-container flex>
+                  <label>Qualidade do sono</label>
+                  <md-select ng-model="ctrl.acompanhamento.infoPessoal.qualidade_sono">
+                      <md-option ng-value="1">Menos de 5horas</md-option>
+                      <md-option ng-value="2">Cerca de 5horas</md-option>
+                      <md-option ng-value="3">Cerca de 6horas</md-option>
+                      <md-option ng-value="4">Cerca de 7horas</md-option>
+                      <md-option ng-value="5">Cerca de 8horas</md-option>
+                      <md-option ng-value="6">Mais de 8horas</md-option>
+                  </md-select>
+              </md-input-container>
+          </div>
+          <div layout="row" class="layout-gt-xs-row layout-column flex">
+              <md-input-container flex>
+                  <label>Atividade física</label>
+                  <md-select ng-model="ctrl.acompanhamento.infoPessoal.atv_fisica">
+                      <md-option ng-value="1">Sedentário</md-option>
+                      <md-option ng-value="2">Pouco ativo</md-option>
+                      <md-option ng-value="3">Moderado</md-option>
+                      <md-option ng-value="4">Intenso</md-option>
+                      <md-option ng-value="5">Muito intenso</md-option>
+                  </md-select>
+              </md-input-container>
+          </div>
+          <div layout="row" class="layout-gt-xs-row layout-column flex">
+              <md-input-container flex>
+                  <label>Bebe álcool</label>
+                  <md-select ng-model="ctrl.acompanhamento.infoPessoal.alcool">
+                      <md-option ng-value="true">Sim</md-option>
+                      <md-option ng-value="false">Não</md-option>
+                  </md-select>
+              </md-input-container>
+          </div>
+          <div layout="row" class="layout-gt-xs-row layout-column flex">
+              <md-input-container flex>
+                  <label>Fumante</label>
+                  <md-select ng-model="ctrl.acompanhamento.infoPessoal.fumante">
+                      <md-option ng-value="true">Sim</md-option>
+                      <md-option ng-value="false">Não</md-option>
+                  </md-select>
+              </md-input-container>
+          </div>
+
+      </div>
+    </div>
+    <div class="p-5 border-bottom margin-bottom-10 margin-top-10" layout="row" layout-align="space-between center" flex="100">
+        <div class="md-subhead">Histórico alimentar</div>
+    </div>
+    <div class="margin-left-25" flex>
+      <div layout="row" class="layout-gt-xs-row layout-column flex">
+          <md-input-container flex>
+              <label>Horário que levanta</label>
+              <input type="time" name="horaAcorda" ng-model="ctrl.acompanhamento.infoPessoal.horaAcorda">
+          </md-input-container>
+          <md-input-container flex>
+              <label>Horário que dorme</label>
+              <input type="time" name="horaDorme" ng-model="ctrl.acompanhamento.infoPessoal.horaDorme">
+          </md-input-container>
+      </div>
+      <div layout="row" class="layout-gt-xs-row layout-column flex" flex="100" style="margin-top:-15px;">
+          <md-chips ng-model="ctrl.acompanhamento.infoPessoal.alimentosPreferidos" md-transform-chip="ctrl.criarObjChip($chip)" placeholder="Alimentos preferidos" flex="100">
+            <md-chip-template>
+                {{$chip.descricao}}
+            </md-chip-template>
+          </md-chips>
+      </div>
+      <div layout="row" class="layout-gt-xs-row layout-column flex" flex="100" style="margin-top: 5px;">
+          <md-chips ng-model="ctrl.acompanhamento.infoPessoal.alimentosNaoAceitos" md-transform-chip="ctrl.criarObjChip($chip)" placeholder="Alimentos que não gosto" flex="100">
+              <md-chip-template>
+                  {{$chip.descricao}}
+              </md-chip-template>
+          </md-chips>
+      </div>
+      <div layout="row" class="layout-gt-xs-row layout-column flex" flex="100" style="margin-top: 5px;">
+            <md-chips ng-model="ctrl.acompanhamento.infoPessoal.alergiaIntolerancia" md-transform-chip="ctrl.criarObjChip($chip)" placeholder="Alergias e intolerâncias" flex="100">
+                <md-chip-template>
+                    {{$chip.descricao}}
+                </md-chip-template>
+            </md-chips>
+      </div>
+      <div layout="row" class="layout-gt-xs-row layout-column flex">
+          <md-input-container flex>
+              <label>Ingestão de água</label>
+              <md-select ng-model="ctrl.acompanhamento.infoPessoal.ingestaoAgua">
+                  <md-option ng-value="0">Menos de 0,5 litro</md-option>
+                  <md-option ng-value="1">Entre 0,5 e 1 litro</md-option>
+                  <md-option ng-value="2">Entre 1,0 e 1,5 litro</md-option>
+                  <md-option ng-value="3">Entre 1,5 e 2 litros</md-option>
+                  <md-option ng-value="4">Entre 2 e 2,5 litros</md-option>
+                  <md-option ng-value="5">Entre 2,5 e 3 litros</md-option>
+                  <md-option ng-value="6">Mas de 3 litros</md-option>
+              </md-select>
+          </md-input-container>
+        </div>
+    </div>
+
+    <div layout="column" layout-gt-xs="row" layout-align="end" class="layout-gt-xs-row layout-column flex margin-bottom-20 margin-top-30">
+        <a class="md-red-500-bg white-text md-raised reference-button md-button md-ink-ripple md-default-theme" ui-sref="app.acompanhamento">
+            <span translate="botao.cancelar">Cancelar</span>
+        </a>
+        <a class="md-green-500-bg white-text md-raised reference-button md-button md-ink-ripple md-default-theme" ng-click="ctrl.salvar(ctrl.acompanhamento, 'info_pessoais')">
+            <span translate="botao.salvar">Salvar</span>
+        </a>
+    </div>
+</form>

@@ -1,0 +1,11 @@
+{
+    "paciente.pesquisa":"Pesquisar paciente",
+    "paciente.incluir":"Incluir paciente",
+    "paciente.editar":"Editar paciente",
+    "paciente.visualizar":"Visualizar paciente",
+
+    "paciente.validacao.form.erro.obrigatoriedade":"Campo obrigatório",
+    "paciente.validacao.form.erro.email":"Email inválido",
+    "paciente.validacao.form.erro.min":"A senha deve ter no mínimo 8 caracteres"
+
+}

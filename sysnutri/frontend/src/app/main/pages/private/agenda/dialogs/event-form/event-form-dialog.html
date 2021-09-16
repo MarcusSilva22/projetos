@@ -1,0 +1,64 @@
+<md-dialog class="event-form-dialog" aria-label="New Message">
+    <form name="eventForm" class="md-inline-form" novalidate>
+        <md-toolbar class="md-accent md-hue-2">
+            <div class="md-toolbar-tools" layout="row" layout-align="space-between center">
+                <span class="title">{{vm.dialogTitle}}</span>
+                <md-button class="md-icon-button" ng-click="vm.closeDialog()" aria-label="Close dialog" translate
+                           translate-attr-aria-label="CALENDAR.CLOSE_DIALOG">
+                    <md-icon md-font-icon="icon-close"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content ms-scroll>
+            <div layout-gt-sm="row">
+                <md-autocomplete flex required
+                    md-input-name="autocompleteField"
+                    md-selected-item="vm.calendarEvent.paciente" md-search-text="vm.pacienteSearch"
+                    md-items="item in vm.autoCompletePaciente(vm.pacienteSearch)"
+                    md-item-text="item.nome" ng-required="true"
+                    md-require-match md-floating-label="Paciente">
+                    <md-item-template>
+                        <span md-highlight-text="vm.pacienteSearch">{{item.nome}}</span>
+                    </md-item-template>
+                </md-autocomplete>
+                <md-autocomplete flex required
+                    md-input-name="autocompleteField"
+                    md-selected-item="vm.calendarEvent.medico" md-search-text="vm.medicoSearch"
+                    md-items="item in vm.autoCompleteMedico(vm.medicoSearch)" md-item-text="item.nome"
+                    ng-required="true" md-require-match md-floating-label="Médico">
+                    <md-item-template>
+                        <span md-highlight-text="vm.medicoSearch">{{item.nome}}</span>
+                    </md-item-template>
+                </md-autocomplete>
+            </div>
+
+            <div layout="row" class="date-row">
+                <md-input-container flex="50">
+                    <md-datepicker name="data" ng-model="vm.calendarEvent.start" md-min-date="vm.dataMin" md-placeholder="Data" flex="100"></md-datepicker>
+                    <div ng-messages="eventForm.data.$error" ng-show="eventForm.data.$error">
+                        <div ng-message="mindate">
+                            <span>Informe uma data superior a data atual</span>
+                        </div>
+                    </div>
+                </md-input-container>
+                <md-input-container flex md-no-float>
+                    <input type="time" name="tempo" ng-model="vm.calendarEvent.start" placeholder="Start Time" translate ng-blur="vm.validarHora()">
+                </md-input-container>
+            </div>
+        </md-dialog-content>
+
+        <md-dialog-actions layout="row" layout-align="space-between center">
+            <md-button ng-click="vm.saveEvent()" class="save-button md-accent md-raised" aria-label="SAVE"
+                       ng-disabled="eventForm.$invalid || eventForm.$pristine"
+                       >
+                Salvar
+            </md-button>
+
+            <md-button class="md-icon-button" aria-label="Delete" translate translate-attr-aria-label="CALENDAR.DELETE" ng-click="vm.deleteEvent()" ng-if="vm.dialogData.type !== 'add'">
+                <md-icon md-font-icon="icon-delete"></md-icon>
+                <md-tooltip><span>Excluir</span></md-tooltip>
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

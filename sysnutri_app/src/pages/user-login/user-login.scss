@@ -1,0 +1,18 @@
+.ios,.md,.wp{
+  page-user-login {
+      .toolbar-background{ background:transparent; border-style:none;}
+      .toolbar::after,.header-md::after{ background-image:none;}
+      ion-content{
+        background-color:white;
+         background-size:100% auto;
+      }
+
+
+      //.scroll-content { display: table; width: 100%; height: 100%; }
+      .centerAlign { display: table-cell; vertical-align: middle; border:#ff0000 1px solid; }
+
+      .item{border:$border-color 1px solid !important; margin-bottom:10px;}
+
+      .logo{position:absolute; top:50%; left:50%; margin-top:-50px; margin-left:-50px;}
+  }
+}

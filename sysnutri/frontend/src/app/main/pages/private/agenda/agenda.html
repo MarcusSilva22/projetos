@@ -1,0 +1,22 @@
+<div class="header-bottom" layout="row" layout-align="center center" style="background-color:#FAFAFA;">
+    <md-button class="md-icon-button arrow" ng-click="ctrl.prev()" aria-label="Previous"
+               translate translate-attr-aria-label="CALENDAR.PREVIOUS">
+        <md-icon md-font-icon="icon-chevron-left"></md-icon>
+    </md-button>
+
+    <div class="title">
+        {{ctrl.calendarView.title}}
+    </div>
+
+    <md-button class="md-icon-button arrow" ng-click="ctrl.next()" aria-label="Next" translate
+               translate-attr-aria-label="CALENDAR.NEXT">
+        <md-icon md-font-icon="icon-chevron-right"></md-icon>
+    </md-button>
+
+</div>
+
+<div id="calendar" class="page-layout simple fullwidth" layout="column">
+    <div class="content">
+        <div id="calendarView" ui-calendar="ctrl.calendarUiConfig.calendar" ng-model="ctrl.events" calendar="main"></div>
+    </div>
+</div>

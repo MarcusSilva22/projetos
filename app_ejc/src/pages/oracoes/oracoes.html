@@ -1,0 +1,28 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Orações</ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+    <div padding class="about-info">
+        <ion-list no-padding>
+            <div *ngFor="let oracao of oracoes; let i=index">
+                <ion-list-header  detail-none no-lines no-padding>
+                    <ion-icon item-left name="arrow-forward" (click)="toggleGroup(i)"    *ngIf="!isGroupShown(i)"></ion-icon>
+                    <ion-icon item-left name="arrow-down"    (click)="toggleGroup(i)"    *ngIf="isGroupShown(i)"></ion-icon>
+                    <span (click)="toggleGroup(i)">
+                        {{oracao.nome}}
+                    </span>
+                </ion-list-header>
+                <p *ngIf="isGroupShown(i)" class="text-style" text-wrap>
+                    {{oracao.descricao}}
+                </p>
+            </div>
+        </ion-list>
+    </div>
+</ion-content>

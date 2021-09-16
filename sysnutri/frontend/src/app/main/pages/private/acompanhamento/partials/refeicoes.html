@@ -1,0 +1,32 @@
+<form name="ctrl.formRefeicao"  ms-form-wizard-form novalidate>
+    <div layout="column" layout-gt-xs="row" layout-align="end" class="layout-gt-xs-row layout-column flex margin-bottom-20 margin-top-30">
+        <a class="md-green-500-bg white-text md-raised reference-button md-button md-ink-ripple md-default-theme" ng-click="ctrl.adicionarRefeicao(evt)">
+            <span>Adicionar Refeição</span>
+        </a>
+    </div>
+
+    <div ng-repeat="refeicao in ctrl.acompanhamento.refeicao | orderBy:'refeicao.horario'">
+        <div class="p-5 border-bottom margin-bottom-20" layout="row" layout-align="space-between center" flex="100">
+            <div class="md-subhead">{{refeicao.descricao}} - {{refeicao.horario | date:'HH:mm'}} </div>
+        </div>
+
+        <div layout="column" layout-gt-xs="row" class="layout-gt-xs-row layout-column flex margin-left-25 margin-rigth-30">
+          <div layout="row" class="layout-gt-xs-row layout-column flex" flex="100" style="margin-top: 5px;">
+              <md-chips ng-model="refeicao.alimentos" md-transform-chip="ctrl.criarObjChip($chip)" placeholder="Descricao" flex="100">
+                  <md-chip-template>
+                      {{$chip.descricao}}
+                  </md-chip-template>
+              </md-chips>
+          </div>
+        </div>
+    </div>
+
+    <div layout="column" layout-gt-xs="row" layout-align="end" class="layout-gt-xs-row layout-column flex margin-bottom-20 margin-top-30">
+        <a class="md-red-500-bg white-text md-raised reference-button md-button md-ink-ripple md-default-theme" ui-sref="app.acompanhamento">
+            <span translate="botao.cancelar">Cancelar</span>
+        </a>
+        <a class="md-green-500-bg white-text md-raised reference-button md-button md-ink-ripple md-default-theme" ng-click="ctrl.salvar(ctrl.acompanhamento, 'refeicoes')">
+            <span translate="botao.salvar">Salvar</span>
+        </a>
+    </div>
+</form>

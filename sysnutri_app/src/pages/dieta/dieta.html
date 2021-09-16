@@ -1,0 +1,38 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>
+        <ion-title text-center>Dieta</ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+    <ion-list>
+      <ion-item *ngFor="let dieta of dietas; let i=index" text-wrap (click)="toggleGroup(i)" [ngClass]="{active: isGroupShown(i)}"
+      style="border-radius: 24px; background-color: green; color: white;">
+        <h3 style="text-transform: uppercase;">
+          <table>
+            <tr>
+              <td colspan="3" style="width: 300px; height: 20px; padding-top: 4px;">
+                {{dieta.descricao}}
+              </td>
+              <td>&nbsp;</td>
+              <td colspan="2"style="width: 300px; text-align: right;">
+                {{dieta.horario | date:'HH:mm'}}
+              </td>
+            </tr>
+          </table>
+          <!--<ion-icon end color="success" item-right [name]="isGroupShown(i) ? 'arrow-forward' : 'arrow-round-down'"></ion-icon>-->
+        </h3>
+        <div *ngIf="isGroupShown(i)">
+            <div *ngFor="let alimento of dieta.alimentos;">
+              <ul>
+                <li>
+                  <span>{{alimento.descricao}}</span>
+                </li>
+              </ul>
+            </div>
+        </div>
+      </ion-item>
+    </ion-list>
+</ion-content>

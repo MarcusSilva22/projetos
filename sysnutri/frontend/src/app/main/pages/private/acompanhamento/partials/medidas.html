@@ -1,0 +1,149 @@
+<form name="ctrl.formRefeicao"  ms-form-wizard-form novalidate>
+
+    <div layout="column" layout-gt-xs="row" layout-align="end" class="layout-gt-xs-row layout-column flex margin-bottom-20 margin-top-30">
+        <a class="md-green-500-bg white-text md-raised reference-button md-button md-ink-ripple md-default-theme" ng-click="ctrl.adicionarMedida(evt)">
+            <span>Adicionar Medida</span>
+        </a>
+    </div>
+
+    <div layout="column" layout-gt-xs="row" layout-align="end" class="layout-gt-xs-row layout-column flex margin-bottom-20 margin-top-30">
+        <v-accordion class="vAccordion--default" flex>
+            <v-pane ng-repeat="acompanhamento in ctrl.acompanhamento.medida" expanded="acompanhamento.isExpanded">
+                <v-pane-header>
+                    {{$index+1}}° Consulta - {{ acompanhamento.data | date:'dd/MM/yyyy'}}
+                </v-pane-header>
+                <v-pane-content  ng-init="ctrl.calcularIMC(acompanhamento)">
+                    <div class="p-5 border-bottom margin-bottom-20" layout="row" layout-align="space-between center" flex="100">
+                        <div class="md-subhead">Informações gerais</div>
+                    </div>
+                    <div class="margin-left-25" flex>
+                        <div layout="row" class="layout-gt-xs-row layout-column flex" flex="100" style="margin-top:-15px;">
+                          <md-input-container class="md-block" flex>
+                            <label>Peso atual</label>
+                            <input type="text" ng-model="acompanhamento.peso" maxlength="6" ng-change="ctrl.formatarNumeroFloat(acompanhamento, 'peso'); ctrl.calcularIMC(acompanhamento)">
+                          </md-input-container>
+                          <md-input-container class="md-block" flex>
+                            <label>Altura</label>
+                            <input type="text" ng-model="acompanhamento.altura" maxlength="5" ng-change="ctrl.formatarNumeroFloat(acompanhamento, 'altura'); ctrl.calcularIMC(acompanhamento)"  ng-blur="ctrl.calcularIMC(acompanhamento)"
+                          </md-input-container>
+                        </div>
+                    </div>
+
+                    <div class="p-5 border-bottom margin-bottom-20" layout="row" layout-align="space-between center" flex="100">
+                        <div class="md-subhead">Cálculos</div>
+                    </div>
+                    <div class="margin-left-25" flex>
+                      <div layout="row" class="layout-gt-xs-row layout-column flex" flex="100" style="margin-top:-15px;">
+                          <!-- <md-input-container class="md-block" flex>
+                            <label>Peso de massa livre de gordura</label>
+                            <input type="text" ng-model="acompanhamento.pesoLivreGordura" ng-disabled="true">
+                          </md-input-container>
+                          <md-input-container class="md-block" flex>
+                            <label>Peso de gordura</label>
+                            <input type="text" ng-model="acompanhamento.pesoGordura" ng-disabled="true">
+                          </md-input-container>
+                          <md-input-container class="md-block" flex>
+                            <label>% de gordura corporal</label>
+                            <input type="text" ng-model="acompanhamento.percentualGordura" ng-disabled="true">
+                          </md-input-container> -->
+                          <md-input-container class="md-block" flex>
+                            <label>IMC</label>
+                            <input type="text" ng-model="acompanhamento.imc" ng-disabled="true" maxlength="6">
+                          </md-input-container>
+                      </div>
+                    </div>
+
+                    <div class="p-5 border-bottom margin-bottom-20" layout="row" layout-align="space-between center" flex="100">
+                        <div class="md-subhead">Circunferências</div>
+                    </div>
+
+                    <div class="margin-left-25" flex>
+                        <div layout="row" class="layout-gt-xs-row layout-column flex" flex="100" style="margin-top:-15px;">
+                            <md-input-container class="md-block" flex>
+                              <label>Braço direito</label>
+                              <input type="text" ng-model="acompanhamento.circ_bracoD" maxlength="6" ng-change="ctrl.formatarNumeroFloat(acompanhamento, 'circ_bracoD')">
+                            </md-input-container>
+                            <md-input-container class="md-block" flex>
+                              <label>Braço esquerdo</label>
+                              <input type="text" ng-model="acompanhamento.circ_bracoE" maxlength="6" ng-change="ctrl.formatarNumeroFloat(acompanhamento, 'circ_bracoE')">
+                            </md-input-container>
+                        </div>
+
+                        <div layout="row" class="layout-gt-xs-row layout-column flex" flex="100" style="margin-top:-15px;">
+                            <md-input-container class="md-block" flex>
+                              <label>Cintura</label>
+                              <input type="text" ng-model="acompanhamento.circ_cintura"  maxlength="6" ng-change="ctrl.formatarNumeroFloat(acompanhamento, 'circ_cintura')">
+                            </md-input-container>
+                            <md-input-container class="md-block" flex>
+                              <label>Abdominal</label>
+                              <input type="text" ng-model="acompanhamento.circ_abdominal" maxlength="6" ng-change="ctrl.formatarNumeroFloat(acompanhamento, 'circ_abdominal')">
+                            </md-input-container>
+                        </div>
+
+                        <div layout="row" class="layout-gt-xs-row layout-column flex" flex="100" style="margin-top:-15px;">
+                            <md-input-container class="md-block" flex>
+                              <label>Perna direita</label>
+                              <input type="text" ng-model="acompanhamento.circ_pernaD" maxlength="6" ng-change="ctrl.formatarNumeroFloat(acompanhamento, 'circ_pernaD')">
+                            </md-input-container>
+                            <md-input-container class="md-block" flex>
+                              <label>Perna esquerda</label>
+                              <input type="text" ng-model="acompanhamento.circ_pernaE" maxlength="6" ng-change="ctrl.formatarNumeroFloat(acompanhamento, 'circ_pernaE')">
+                            </md-input-container>
+                        </div>
+
+                        <div layout="row" class="layout-gt-xs-row layout-column flex" flex="100" style="margin-top:-15px;">
+                            <md-input-container class="md-block" flex>
+                              <label>Coxa direita</label>
+                              <input type="text" ng-model="acompanhamento.circ_coxaD" maxlength="6" ng-change="ctrl.formatarNumeroFloat(acompanhamento, 'circ_coxaD')">
+                            </md-input-container>
+                            <md-input-container class="md-block" flex>
+                              <label>Coxa esquerda</label>
+                              <input type="text" ng-model="acompanhamento.circ_coxaE" maxlength="6" ng-change="ctrl.formatarNumeroFloat(acompanhamento, 'circ_coxaE')">
+                            </md-input-container>
+                        </div>
+                    </div>
+
+                    <div class="p-5 border-bottom margin-bottom-20" layout="row" layout-align="space-between center" flex="100">
+                        <div class="md-subhead">Dobras cutâneas</div>
+                    </div>
+
+                    <div class="margin-left-25" flex>
+                        <div layout="row" class="layout-gt-xs-row layout-column flex" flex="100" style="margin-top:-15px;">
+                            <md-input-container class="md-block" flex>
+                              <label>Bicipital</label>
+                              <input type="text" ng-model="acompanhamento.dc_bicipital"  maxlength="6" ng-change="ctrl.formatarNumeroFloat(acompanhamento, 'dc_bicipital')">
+                            </md-input-container>
+                            <md-input-container class="md-block" flex>
+                              <label>Tricipital</label>
+                              <input type="text" ng-model="acompanhamento.dc_tricipital"  maxlength="6" ng-change="ctrl.formatarNumeroFloat(acompanhamento, 'dc_tricipital')">
+                            </md-input-container>
+                        </div>
+
+                        <div layout="row" class="layout-gt-xs-row layout-column flex" flex="100" style="margin-top:-15px;">
+                            <md-input-container class="md-block" flex>
+                              <label>Suprailiaca</label>
+                              <input type="text" ng-model="acompanhamento.dc_suprailiaca" maxlength="6" ng-change="ctrl.formatarNumeroFloat(acompanhamento, 'dc_suprailiaca')">
+                            </md-input-container>
+                            <md-input-container class="md-block" flex>
+                              <label>Subraescapular</label>
+                              <input type="text" ng-model="acompanhamento.dc_supraEscapular" maxlength="6" ng-change="ctrl.formatarNumeroFloat(acompanhamento, 'dc_supraEscapular')">
+                            </md-input-container>
+                        </div>
+                    </div>
+
+                </v-pane-content>
+            </v-pane>
+        </v-accordion>
+    </div>
+
+
+    <div layout="column" layout-gt-xs="row" layout-align="end" class="layout-gt-xs-row layout-column flex margin-bottom-20 margin-top-30">
+        <a class="md-red-500-bg white-text md-raised reference-button md-button md-ink-ripple md-default-theme" ui-sref="app.acompanhamento">
+            <span translate="botao.cancelar">Cancelar</span>
+        </a>
+        <a class="md-green-500-bg white-text md-raised reference-button md-button md-ink-ripple md-default-theme" ng-click="ctrl.salvar(ctrl.acompanhamento, 'medidas')">
+            <span translate="botao.salvar">Salvar</span>
+        </a>
+    </div>
+
+</form>
